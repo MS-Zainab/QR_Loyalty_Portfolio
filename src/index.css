@@ -1,0 +1,120 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ivory: #FAF8F3;
+  --color-ivory-light: #FDFBF7;
+  --color-cream: #F2EEE5;
+  --color-cream-dark: #E9E3D5;
+  --color-sage: #91A894;
+  --color-sage-light: #B8C7BA;
+  --color-sage-soft: #E5ECE6;
+  --color-sage-dark: #5A775E;
+  --color-forest: #29483D;
+  --color-forest-dark: #1E372E;
+  --color-forest-light: #3A5F52;
+  --color-champagne: #C6A875;
+  --color-champagne-light: #E5D5B3;
+  --color-champagne-soft: #F6F1E5;
+  --color-champagne-dark: #A1824D;
+  --color-peach: #E8C8B8;
+  --color-peach-light: #F7ECE6;
+  --color-charcoal: #29332E;
+  --color-charcoal-light: #4A564F;
+  --color-charcoal-muted: #747B73;
+  --color-border-soft: #E6E4DC;
+  --color-border-card: #EFECE3;
+
+  --font-sans: 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: 'DM Serif Display', Georgia, Cambria, 'Times New Roman', serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: var(--font-sans);
+    color: var(--color-charcoal);
+    background-color: var(--color-ivory);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background-color: #91A894;
+    color: #FFFFFF;
+  }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Subtle float animation */
+@keyframes softFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes softPulse {
+  0%, 100% {
+    opacity: 0.85;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.02);
+  }
+}
+
+@keyframes scanLine {
+  0% {
+    top: 5%;
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    top: 90%;
+    opacity: 0.3;
+  }
+}
+
+.animate-soft-float {
+  animation: softFloat 5s ease-in-out infinite;
+}
+
+.animate-soft-float-delayed {
+  animation: softFloat 6s ease-in-out 1.5s infinite;
+}
+
+.animate-scan-line {
+  animation: scanLine 2.8s ease-in-out infinite;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F2EEE5;
+}
+::-webkit-scrollbar-thumb {
+  background: #C6A875;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #A1824D;
+}
